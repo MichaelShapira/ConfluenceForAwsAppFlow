@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Template to deploy the lambda connector in your account
+Resources:
+  ConnectorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazon.custom.appflow.confluence.handler.ConfluenceLambdaHandler::handleRequest
+      Timeout: 60
+      MemorySize: 512
+      CodeUri: ./target/ConfluenceForAwsAppFlow-1.0-SNAPSHOT-jar-with-dependencies.jar
+      Description: "AppFlow connector for Confluence Blogs Entity"
+      Runtime: java11
+      Timeout: 30
+      MemorySize: 256
+      Policies:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Allow
+          Action: 'secretsmanager:GetSecretValue'
+          Resource: !Sub 'arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:appflow!${AWS::AccountId}-<your-connector-label>-*'
+  PolicyPermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      FunctionName: !GetAtt ConnectorFunction.Arn
+      Action: lambda:InvokeFunction
+      Principal: 'appflow.amazonaws.com'
+      SourceAccount: !Ref 'AWS::AccountId'
+      SourceArn: !Sub 'arn:aws:appflow:${AWS::Region}:${AWS::AccountId}:*'

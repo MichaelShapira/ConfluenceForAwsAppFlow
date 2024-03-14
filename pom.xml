@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.amazon.custom.appflow.confluence</groupId>
+    <artifactId>ConfluenceForAwsAppFlow</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.shade.plugin.version>3.2.1</maven.shade.plugin.version>
+        <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <aws.java.sdk.version>2.15.79</aws.java.sdk.version>
+        <aws.lambda.java.version>1.2.0</aws.lambda.java.version>
+        <junit5.version>5.4.2</junit5.version>
+        <log4j.version>2.17.1</log4j.version>
+        <aws-lambda-java-log4j2.version>1.5.1</aws-lambda-java-log4j2.version>
+        <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
+        <json.version>20231013</json.version>
+        <aws-secretsmanager-caching-java.version>1.0.1</aws-secretsmanager-caching-java.version>
+        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
+        <log4j2-cachefile-transformer.version>2.13.0</log4j2-cachefile-transformer.version>
+        <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
+        
+        
+        
+            <aws-custom-connector-sdk.version>1.0</aws-custom-connector-sdk.version>
+		   
+		    <commons-collections4.version>4.1</commons-collections4.version>
+		    <aws-lambda-java-log4j2.version>1.2.0</aws-lambda-java-log4j2.version>
+		    <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
+		    <aws-sdk.version>2.16.65</aws-sdk.version>
+		    <apache.commons.version>1.9</apache.commons.version>
+		    <maven.compiler.source>11</maven.compiler.source>
+		    <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${aws.java.sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/software.amazon.appflow/aws-custom-connector-sdk -->
+			<!-- https://mvnrepository.com/artifact/software.amazon.appflow/aws-custom-connector-sdk -->
+
+			<!-- https://mvnrepository.com/artifact/software.amazon.appflow/aws-custom-connector-queryfilter -->
+			<!-- https://mvnrepository.com/artifact/software.amazon.appflow/aws-appflow-custom-connector -->
+		<!-- https://mvnrepository.com/artifact/software.amazon.appflow/aws-custom-connector-integ-test -->
+
+
+
+
+        </dependencies>
+    </dependencyManagement>
+    
+  
+    
+ <dependencies>
+    <dependency>
+      <groupId>software.amazon.appflow</groupId>
+      <artifactId>aws-custom-connector-sdk</artifactId>
+      <version>${aws-custom-connector-sdk.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>${commons-collections4.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>secretsmanager</artifactId>
+      <version>${aws-sdk.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>netty-nio-client</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20230227</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+      <version>${apache.commons.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.2</version>
+
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.8.2</version>
+
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>3.9.0</version>
+
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java -->
+	<dependency>
+	    <groupId>com.mashape.unirest</groupId>
+	    <artifactId>unirest-java</artifactId>
+	    <version>1.4.9</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.10.1</version>
+	</dependency>
+
+
+  </dependencies>
+
+<build>
+    <plugins>
+		<plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>fully.qualified.MainClass</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+    </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>${maven-shade-plugin.version}</version>
+        <configuration>
+          <createDependencyReducedPom>false</createDependencyReducedPom>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer
+                  implementation="com.github.edwgiz.maven_shade_plugin.log4j2_cache_transformer.PluginsCacheFileTransformer">
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.github.edwgiz</groupId>
+            <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
+            <version>2.13.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.2</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <!-- configure the plugin here -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+      
+    </plugins>
+  </build>
+</project>
