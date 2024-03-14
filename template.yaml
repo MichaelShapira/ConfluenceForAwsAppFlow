@@ -6,7 +6,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.amazon.custom.appflow.confluence.handler.ConfluenceLambdaHandler::handleRequest
-      Timeout: 60
+      Timeout: 90
       MemorySize: 512
       CodeUri: ./target/ConfluenceForAwsAppFlow-1.0-SNAPSHOT-jar-with-dependencies.jar
       Description: "AppFlow connector for Confluence Blogs Entity"
