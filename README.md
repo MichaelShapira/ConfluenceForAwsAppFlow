@@ -8,6 +8,8 @@ The authentication is based on a username and token. 
 
 Based on this AWS blog : https://aws.amazon.com/blogs/compute/building-custom-connectors-using-the-amazon-appflow-custom-connector-sdk/ 
 
+The deployment will deploy a new Lambda function. Modify its policy for secret managers before deploying (template.yaml) file
+
 ## Prerequisites
 - Java 1.8+
 - Apache Maven
