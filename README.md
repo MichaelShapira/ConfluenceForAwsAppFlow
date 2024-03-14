@@ -1,6 +1,12 @@
 # App
 
-This project contains an AWS Lambda maven application with [AWS Java SDK 2.x](https://github.com/aws/aws-sdk-java-v2) dependencies.
+This is a custom connector for Amazon AppFlow. This connector can work with the Confluence Cloud. Note that it was created for POC purposes only and provided as is. 
+
+Only the "Blog" entity is supported. 
+
+The authentication is based on a username and token. 
+
+Based on this AWS blog : https://aws.amazon.com/blogs/compute/building-custom-connectors-using-the-amazon-appflow-custom-connector-sdk/ 
 
 ## Prerequisites
 - Java 1.8+
@@ -8,20 +14,13 @@ This project contains an AWS Lambda maven application with [AWS Java SDK 2.x](ht
 - [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 - Docker
 
-## Development
-
-The generated function handler class just returns the input. The configured AWS Java SDK client is created in `DependencyFactory` class and you can 
-add the code to interact with the SDK client based on your use case.
 
 #### Building the project
 ```
-mvn clean install
+mvn clean compile assembly:single
 ```
 
-#### Testing it locally
-```
-sam local invoke
-```
+
 
 #### Adding more SDK clients
 To add more service clients, you need to add the specific services modules in `pom.xml` and create the clients in `DependencyFactory` following the same 
