@@ -61,17 +61,11 @@ public class ConfluenceConfigurationHandler extends AbstractConfluenceHandler im
 		   Map<String, String> secrets = SecretsManagerHelper.getSecret(request.credentials().secretArn());
 	    	
 		 
-			String url = secrets.getOrDefault("URL", null);
+		String url = secrets.getOrDefault("URL", null);
 	    	String userName = secrets.getOrDefault("UserName", null);
 	    	String token = secrets.getOrDefault("Token", null);
 	    	
 	    	String entity = "blogposts?body-format=storage";
-	    	
-	    	
-	    	System.out.print("URL "+secrets.getOrDefault("URL", null));
-	    	System.out.print("userName "+secrets.getOrDefault("UserName", null));
-	    	System.out.print("token "+secrets.getOrDefault("Token", null));
-	    	System.out.println("secretarn "+request.credentials().secretArn());
 	    	
 	    
 	    	HttpResponse<JsonNode> response=null;
