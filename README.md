@@ -64,7 +64,7 @@ See [Deploying Serverless Applications](https://docs.aws.amazon.com/serverless-a
 
 # Demo
 
-I created a new blog entry in Confluence Cloud. The blog contains a textual version of the famous Mobi Dick book.
+I created a new blog entry in Confluence Cloud. The blog contains a textual version of the famous Moby Dick book.
 
 <img width="1269" alt="image" src="https://github.com/MichaelShapira/ConfluenceForAwsAppFlow/assets/135519473/f9c3246c-63a2-480e-a3d1-0179061f5400">
 
