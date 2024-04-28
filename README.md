@@ -1,4 +1,19 @@
-# App
+# Goal 
+
+A very common use case for generative AI is the creation of organization-specific domains of knowledge. The general idea is to store the data in a vector database and use the RAG approach to query the data. Once you have the data, use a large language model to process the result and format it into polite and human-readable text. 
+
+The challenging part is: how exactly do we get all sources of information? Some data is located in the SQL database, some in the NoSql database, some in CRM, like Saleforce, and some in ERP, like SAP.
+
+The goal is to have the ability to quickly connect to the sources, extract the data, optionally enrich the data, and then store it in a vector database. 
+
+# Approach
+
+The ability to integrate data from different sources has existed for years, and it even has its own name for the Saas offering: Ipaas (Integration Platform as a Service). Another service is Amazon AppFlow, which has built-in connectors to other systems and, more importantly, the ability to write custom connectors if you need one.
+This is exactly what we need. Get data from different sources with the ability to define customization.
+
+# Architecture
+
+# Application
 
 This is a custom connector for Amazon AppFlow. This connector can work with the Confluence Cloud. Note that it was created for POC purposes only and provided as is. 
 
