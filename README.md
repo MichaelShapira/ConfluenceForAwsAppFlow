@@ -135,6 +135,6 @@ This is the function that queries the knowledge bases and reuses the session ID.
 
 <img width="861" alt="image" src="https://github.com/MichaelShapira/ConfluenceForAwsAppFlow/assets/135519473/feb3ba23-5df1-45c8-80a7-b2cf9bef67ff">
 
-Below is an example of querying the knowledge base with subsequent questions.
+Above is an example of querying the knowledge base with subsequent questions.
 
 
