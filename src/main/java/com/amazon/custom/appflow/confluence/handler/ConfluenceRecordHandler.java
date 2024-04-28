@@ -54,12 +54,12 @@ public class ConfluenceRecordHandler extends AbstractConfluenceHandler implement
      
       System.out.println("queryData");
       Map<String, String> secrets = SecretsManagerHelper.getSecret(request.connectorContext().credentials().secretArn());
-  	  String url = secrets.getOrDefault("URL", null);
-  	  String userName = secrets.getOrDefault("UserName", null);
-  	  String token = secrets.getOrDefault("Token", null);
+      String url = secrets.getOrDefault("URL", null);
+      String userName = secrets.getOrDefault("UserName", null);
+      String token = secrets.getOrDefault("Token", null);
   
   
-    	HttpResponse<JsonNode> response=null;
+      HttpResponse<JsonNode> response=null;
 		try {
 			response = getConfluenceResponseForEntity(userName,token,url,request.entityIdentifier());
 			return ImmutableQueryDataResponse.builder()
